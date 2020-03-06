@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-books',
@@ -7,9 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BooksComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _http: DataService) { }
 
   ngOnInit() {
+    this.booksApi();
   }
+
+
+
+  booksApi(){
+
+    var url = "libros";
+
+    this._http.obtenerData(url, null).subscribe(resul =>{
+      console.log(resul);
+    });
+    
+
+  }
+
+
+
+
+
+
+
 
 }
